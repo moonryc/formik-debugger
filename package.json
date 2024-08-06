@@ -1,0 +1,43 @@
+{
+  "name": "formik-debugger",
+  "version": "1.0.0",
+  "description": "TBD",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "author": "Ryan Moon",
+  "license": "MIT",
+  "devDependencies": {
+    "@chromatic-com/storybook": "^1.6.1",
+    "@storybook/addon-essentials": "^8.2.7",
+    "@storybook/addon-interactions": "^8.2.7",
+    "@storybook/addon-links": "^8.2.7",
+    "@storybook/addon-onboarding": "^8.2.7",
+    "@storybook/blocks": "^8.2.7",
+    "@storybook/react": "^8.2.7",
+    "@storybook/react-vite": "^8.2.7",
+    "@storybook/test": "^8.2.7",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.1.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "formik": "^2.4.6",
+    "prop-types": "^15.8.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "storybook": "^8.2.7",
+    "typescript": "^5.5.4",
+    "vite": "^5.3.5"
+  },
+  "peerDependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "dependencies": {
+    "@storybook/builder-vite": "^8.2.7",
+    "react-draggable": "^4.4.6"
+  }
+}
