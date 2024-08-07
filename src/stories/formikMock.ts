@@ -1,4 +1,5 @@
 import { fn } from '@storybook/test';
+import {FormikProps} from "formik";
 
 export const formikMock:FormikProps<any> = {
     // Mock form state
