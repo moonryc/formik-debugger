@@ -8,13 +8,8 @@ export type DebuggerModalProps = {
 } & DebuggerProps
 
 const DebuggerModal = ({open, onClose, formik}: DebuggerModalProps) => {
-
-    if (!open) {
-        return null;
-    }
-
     return (
-        <StickyNote onClose={onClose} title={"FormikDebugger"}>
+        <StickyNote open={open} onClose={onClose} title={"Formik Debugger"}>
             <Debugger formik={formik}/>
         </StickyNote>
     );

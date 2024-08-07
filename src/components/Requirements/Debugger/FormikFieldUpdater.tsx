@@ -1,10 +1,14 @@
 import React, { useCallback, useMemo, useState } from "react";
 
+import {type TextFieldProps} from "@mui/material/TextField";
 
-
+import Switch from "@mui/material/Switch"
+import FormControlLabel from "@mui/material/FormControlLabel"
+import Grid from "@mui/material/Grid"
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 import { FormikProps } from "formik";
-
-// import { AutoCompleteSingleSelect, AutoCompleteSingleSelectProps, DropdownOption } from "../AutoComplete";
+import AutoCompleteSingleSelect, { AutoCompleteSingleSelectProps, type DropdownOption } from "../AutoCompleteSingleSelect/AutoCompleteSingleSelect"
 import {useToggle} from "../hooks/useToggle";
 
 type FormikFieldSelectorProps = {
@@ -18,9 +22,9 @@ const FormikFieldUpdater = ({ formik }: FormikFieldSelectorProps) => {
 
     const fieldNames = useMemo(() => Object.keys(formik.values).sort(), [formik.values]);
 
-    // const options: DropdownOption[] = useMemo(() => {
-    //     return fieldNames.map<DropdownOption>((fieldName) => ({ id: fieldName, displayName: fieldName }));
-    // }, [fieldNames]);
+    const options: DropdownOption[] = useMemo(() => {
+        return fieldNames.map<DropdownOption>((fieldName) => ({ id: fieldName, displayName: fieldName }));
+    }, [fieldNames]);
 
     const handleAutoCompleteOnChange = useCallback<AutoCompleteSingleSelectProps["onChange"]>(
         (_event, value) => {
@@ -34,7 +38,7 @@ const FormikFieldUpdater = ({ formik }: FormikFieldSelectorProps) => {
         [],
     );
 
-    const handleTextFieldOnChange = useCallback(
+    const handleTextFieldOnChange = useCallback<NonNullable<TextFieldProps["onChange"]>>(
         (event) => setText(event.target.value),
         [],
     );
@@ -64,34 +68,32 @@ const FormikFieldUpdater = ({ formik }: FormikFieldSelectorProps) => {
     }, [fieldNames, formik, parseAsJSON, selectedField, text]);
 
     return (
-        <div>
-            <div>
-                PLACEHOLDER
-                {/*<AutoCompleteSingleSelect*/}
-                {/*    id="fieldName"*/}
-                {/*    onChange={handleAutoCompleteOnChange}*/}
-                {/*    value={selectedField}*/}
-                {/*    options={options}*/}
-                {/*    // eslint-disable-next-line react/jsx-no-bind*/}
-                {/*    renderInput={(props) => <TextField {...props} fullWidth label="Field Name" />}*/}
-                {/*/>*/}
-                FOO
-            {/*</div>*/}
-            {/*<Grid item xs={12}>*/}
-            {/*    <TextField fullWidth label="New Value" multiline value={text} onChange={handleTextFieldOnChange} />*/}
-            {/*</Grid>*/}
-            {/*<Grid item xs={12} md={6} display="flex" justifyContent="center">*/}
-            {/*    <FormControlLabel*/}
-            {/*        control={<Switch checked={parseAsJSON} onChange={toggleParseAsJSON} />}*/}
-            {/*        label="Use JSON.parse?"*/}
-            {/*    />*/}
-            {/*</Grid>*/}
-            {/*<Grid item xs={12} md={6}>*/}
-            {/*    <Button fullWidth variant="contained" onClick={handleUpdate}>*/}
-            {/*        Update*/}
-            {/*    </Button>*/}
-            </div>
-        </div>
+        <Grid container spacing={2}>
+            <Grid item xs={12}>
+                <AutoCompleteSingleSelect
+                    id="fieldName"
+                    onChange={handleAutoCompleteOnChange}
+                    value={selectedField}
+                    options={options}
+                    // eslint-disable-next-line react/jsx-no-bind
+                    renderInput={(props) => <TextField {...props} fullWidth label="Field Name" />}
+                />
+            </Grid>
+            <Grid item xs={12}>
+                <TextField fullWidth label="New Value" multiline value={text} onChange={handleTextFieldOnChange} />
+            </Grid>
+            <Grid item xs={12} md={6} display="flex" justifyContent="center">
+                <FormControlLabel
+                    control={<Switch checked={parseAsJSON} onChange={toggleParseAsJSON} />}
+                    label="Use JSON.parse?"
+                />
+            </Grid>
+            <Grid item xs={12} md={6}>
+                <Button fullWidth variant="contained" onClick={handleUpdate}>
+                    Update
+                </Button>
+            </Grid>
+        </Grid>
     );
 };
 

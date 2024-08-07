@@ -2,6 +2,12 @@ import React, {useCallback, useMemo, useState} from 'react';
 import {FormikProps} from "formik";
 import {useToggle} from "../hooks/useToggle";
 import FormikFieldUpdater from "./FormikFieldUpdater";
+import Box from "@mui/material/Box";
+import ButtonGroup from "@mui/material/ButtonGroup";
+import  Stack from "@mui/material/Stack";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import Button from "@mui/material/Button";
 
 enum FormikDebuggingTools {
     VALUES = "VALUES",
@@ -10,6 +16,7 @@ enum FormikDebuggingTools {
     TOUCHED = "TOUCHED",
     ETC = "ETC",
     FIELD_UPDATER = "FIELD UPDATER",
+    CUSTOM_TOOLS = "CUSTOM TOOLS"
 }
 
 const listOfToolsAsKeys = Object.keys(FormikDebuggingTools) as (keyof typeof FormikDebuggingTools)[];
@@ -17,13 +24,15 @@ const toolOptions = listOfToolsAsKeys.map((toolKeyname) => ({
     id: FormikDebuggingTools[toolKeyname],
     displayName: FormikDebuggingTools[toolKeyname],
 }));
+const customToolPlaceholder: DebuggerProps["customTools"] = []
+
 
 export type DebuggerProps = {
     formik: FormikProps<any>
     customTools?: React.ReactNode[]
 }
 
-const Debugger = ({formik, customTools}: DebuggerProps) => {
+const Debugger = ({formik, customTools=customToolPlaceholder}: DebuggerProps) => {
     const {validateForm, resetForm, ...formikRest} = formik;
     const {values, errors, touched, initialValues, ...formikETC} = formikRest;
 
@@ -61,32 +70,39 @@ const Debugger = ({formik, customTools}: DebuggerProps) => {
                 return convertObjectToJSX(formikETC);
             case FormikDebuggingTools.FIELD_UPDATER:
                 return <FormikFieldUpdater formik={formik}/>;
+            case FormikDebuggingTools.CUSTOM_TOOLS:
+                return customTools
             default:
                 return <span>Invalid tool selected</span>;
         }
     }, [errors, formik, formikETC, initialValues, selectedTool, touched, values]);
 
     return (
-        <>
-            <div>
-                <div>
-                    <button onClick={handleForceValidate}>Force Validate</button>
-                    <button onClick={handleResetForm}>Reset Form</button>
-                </div>
-                <div>
-                    {/*TOGGLE BUTTONS*/}
-                    {toolOptions.map((item) => (
-                        // <ToggleButton key={item.id} value={item.id}>
-                        //     {item.displayName}
-                        "help"
-                        // </ToggleButton>
-                    ))}
-                </div>
-                <div height="25rem" overflow="auto" styles={{overflowY: "overflow"}}>
-                    {content}
-                </div>
-            </div>
-        </>
+        <Stack gap={2}>
+            <ButtonGroup fullWidth>
+                <Button onClick={handleForceValidate}>Force Validate</Button>
+                <Button onClick={handleResetForm}>Reset Form</Button>
+            </ButtonGroup>
+            <Box display={"flex"} justifyContent={"center"}>
+            <ToggleButtonGroup
+                color="secondary"
+                value={selectedTool}
+                exclusive
+                onChange={handleToggleButtonChange}
+                aria-label="Platform"
+            >
+                {toolOptions.map((item) => {
+                    if(item.displayName === FormikDebuggingTools.CUSTOM_TOOLS && customTools?.length === 0 ){
+                        return null
+                    }
+                    return <ToggleButton key={item.id} value={item.id}>{item.displayName}</ToggleButton>
+                })}
+            </ToggleButtonGroup>
+            </Box>
+            <Box height="25rem" overflow="auto" sx={{ overflowY: "overflow" }}>
+                {content}
+            </Box>
+        </Stack>
     );
 };
 
