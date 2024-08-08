@@ -1,4 +1,4 @@
-import { BaseSyntheticEvent, SyntheticEvent } from "react";
+import type { BaseSyntheticEvent, SyntheticEvent } from "react";
 
 type Mutable<T> = {
     -readonly [P in keyof T]: T[P];
