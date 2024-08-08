@@ -1,28 +1,23 @@
-import { fn } from '@storybook/test';
-import {FormikProps} from "formik";
+import * as yup from "yup";
 
-export const formikMock:FormikProps<any> = {
-    // Mock form state
-    values: {},
-    errors: {},
-    touched: {},
-    handleChange: fn(),
-    handleBlur: fn(),
-    handleSubmit: fn(),
-    setFieldValue: fn(),
-    setFieldTouched: fn(),
-    setFieldError: fn(),
-    setValues: fn(),
-    setErrors: fn(),
-    setTouched: fn(),
-    resetForm: fn(),
-    submitForm: fn(),
-    validateForm: fn(),
-    validateField: fn(),
-    isValid: true,
-    dirty: false,
-    isSubmitting: false,
-    isValidating: false,
-    status: null,
-    // Add any additional props as needed
-};
+
+export const formikInitialState = {
+    username: "",
+    password: "",
+} as const
+
+
+export const formikSchema = yup.object().shape({
+    username: yup
+        .string()
+        .required()
+        .test('is-arthur-dent', 'username is not correct', (username) => {
+            return username === 'Arthur Dent';
+        }),
+    password: yup
+        .string()
+        .required()
+        .test('is-password-42', 'password is not correct', (password) => {
+            return password === '42';
+        }),
+});
