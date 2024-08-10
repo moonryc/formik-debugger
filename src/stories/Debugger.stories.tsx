@@ -1,17 +1,12 @@
-import {DebuggerModal} from "../components"
 import {formikInitialState, formikSchema} from "./formikMock";
-import {useToggle} from "../components/Requirements/hooks/useToggle";
 import {FormikConfig, useFormik} from "formik";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import {Typography} from "@mui/material";
-import Button from "@mui/material/Button";
 import React from "react";
 import Debugger from "../components/Requirements/Debugger/Debugger";
 
 const DebuggerSetup = () => {
-    const [isOpen, {toggle, toggleOff}] = useToggle(false)
-
 
     const formik = useFormik<typeof formikInitialState>({
         initialValues: formikInitialState,

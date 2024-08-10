@@ -15,7 +15,7 @@ const StickyNote = ({children, open,onClose, title}:PropsWithChildren<StickyNote
 
     return (
         <Draggable handle={"#sticky-note"}>
-            <Popper open={open} sx={{ zIndex: 9999999 }}>
+            <Popper open={open} style={{ zIndex: 9999999 }}>
                 <Paper sx={{ paddingX: "24px" }}>
                     <Typography
                         id="sticky-note"

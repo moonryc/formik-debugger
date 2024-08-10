@@ -14,7 +14,7 @@ import {
     isOptionEqualToValue,
     renderOptionSolo,
 } from "./utils";
-import cloneEvent from "./cloneEvent";
+import cloneEvent, {ClonedEvent} from "./cloneEvent";
 
 type AutoCompleteSingleSelectOnChange = NonNullable<
     UseAutocompleteProps<DropdownOption, false, false, false>["onChange"]

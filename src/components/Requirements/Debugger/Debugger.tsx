@@ -1,12 +1,11 @@
 import React, {useCallback, useMemo, useState} from 'react';
 import {FormikProps} from "formik";
-import {useToggle} from "../hooks/useToggle";
 import FormikFieldUpdater from "./FormikFieldUpdater";
 import Box from "@mui/material/Box";
 import ButtonGroup from "@mui/material/ButtonGroup";
-import  Stack from "@mui/material/Stack";
+import Stack from "@mui/material/Stack";
 import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import ToggleButtonGroup, {ToggleButtonGroupProps} from "@mui/material/ToggleButtonGroup";
 import Button from "@mui/material/Button";
 
 enum FormikDebuggingTools {
@@ -35,8 +34,6 @@ export type DebuggerProps = {
 const Debugger = ({formik, customTools=customToolPlaceholder}: DebuggerProps) => {
     const {validateForm, resetForm, ...formikRest} = formik;
     const {values, errors, touched, initialValues, ...formikETC} = formikRest;
-
-    const [isDebuggerOpen, {toggleOff: closeDebugger, toggle: toggleDebugger}] = useToggle(false);
     const [selectedTool, setSelectedTool] = useState<FormikDebuggingTools | null>(null);
 
 
@@ -45,8 +42,10 @@ const Debugger = ({formik, customTools=customToolPlaceholder}: DebuggerProps) =>
         () => resetForm(formik.initialValues),
         [formik.initialValues, resetForm],
     );
-    const handleToggleButtonChange = useCallback(
-        (_event, value) => setSelectedTool(value),
+
+    const handleToggleButtonChange = useCallback<Required<ToggleButtonGroupProps>["onChange"]>(
+        (_event,value) =>
+            setSelectedTool(value as FormikDebuggingTools),
         [],
     );
 
