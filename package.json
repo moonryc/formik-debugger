@@ -1,6 +1,6 @@
 {
   "name": "formik-debugger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A developer tool to aid in large forms using formik",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
