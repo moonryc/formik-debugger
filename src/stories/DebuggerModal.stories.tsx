@@ -23,11 +23,11 @@ const DebuggerModalSetup = () => {
     return (
         <Stack gap={2} p={2}>
             <Typography variant={"h6"} textAlign={"center"}>Use the debugger to determine the correct valid login</Typography>
-            <TextField label={"username"} name={"username"} required value={formik.values.username}
+            <TextField inputProps={{autocomplete:"off"}}  label={"username"} name={"username"} required value={formik.values.username}
                        onChange={formik.handleChange} onBlur={formik.handleBlur}
                        helperText={formik.errors.username && "Use The Formik Debugger to find the correct username"}
             />
-            <TextField label={"password"} name={"password"} required value={formik.values.password}
+            <TextField  inputProps={{autocomplete:"off"}} label={"password"} name={"password"} required value={formik.values.password}
                        onChange={formik.handleChange} onBlur={formik.handleBlur}
                        error={formik.touched.password && Boolean(formik.errors.password)}
                        helperText={formik.errors.password && "Use The Formik Debugger to find the correct password"}

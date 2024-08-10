@@ -70,7 +70,7 @@ const FormikFieldUpdater = ({ formik }: FormikFieldSelectorProps) => {
     }, [fieldNames, formik, parseAsJSON, selectedField, text]);
 
     return (
-        <Grid container spacing={2}>
+        <Grid container spacing={2} paddingY={2}>
             <Grid item xs={12}>
                 <AutoCompleteSingleSelect
                     id="fieldName"
