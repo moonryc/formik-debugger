@@ -7,10 +7,10 @@ export type DebuggerModalProps = {
     onClose: StickyNoteProps["onClose"]
 } & DebuggerProps
 
-const DebuggerModal = ({open, onClose, formik}: DebuggerModalProps) => {
+const DebuggerModal = ({open, onClose, formik, customTools}: DebuggerModalProps) => {
     return (
         <StickyNote open={open} onClose={onClose} title={"Formik Debugger"}>
-            <Debugger formik={formik}/>
+            <Debugger formik={formik} customTools={customTools}/>
         </StickyNote>
     );
 };
