@@ -1,10 +1,12 @@
 {
   "name": "formik-debugger",
   "version": "1.0.0",
-  "description": "TBD",
-  "main": "index.js",
+  "description": "A developer tool to aid in large forms using formik",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -17,6 +19,7 @@
     "@storybook/addon-links": "^8.2.7",
     "@storybook/addon-onboarding": "^8.2.7",
     "@storybook/blocks": "^8.2.7",
+    "@storybook/builder-vite": "^8.2.7",
     "@storybook/react": "^8.2.7",
     "@storybook/react-vite": "^8.2.7",
     "@storybook/test": "^8.2.7",
@@ -24,7 +27,7 @@
     "@types/node": "^22.1.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "formik": "^2.4.6",
+    "formik": "^2.2.9",
     "prop-types": "^15.8.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -36,14 +39,13 @@
   "peerDependencies": {
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "formik": "^2.4.6"
+    "formik": "^2.2.9"
   },
   "dependencies": {
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^5.16.6",
     "@mui/material": "^5.16.6",
-    "@storybook/builder-vite": "^8.2.7",
     "match-sorter": "^6.3.4",
     "react-draggable": "^4.4.6"
   }
