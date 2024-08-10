@@ -8,8 +8,10 @@ import Grid from "@mui/material/Grid"
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { FormikProps } from "formik";
-import AutoCompleteSingleSelect, { AutoCompleteSingleSelectProps, type DropdownOption } from "../AutoCompleteSingleSelect/AutoCompleteSingleSelect"
+import AutoCompleteSingleSelect from "../AutoCompleteSingleSelect/AutoCompleteSingleSelect"
+import type { AutoCompleteSingleSelectProps } from "../AutoCompleteSingleSelect/AutoCompleteSingleSelect"
 import {useToggle} from "../hooks/useToggle";
+import {DropdownOption} from "../AutoCompleteSingleSelect/utils";
 
 type FormikFieldSelectorProps = {
     formik: FormikProps<any>;
