@@ -4,6 +4,7 @@
   "description": "A developer tool to aid in large forms using formik",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": ["dist"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
@@ -11,6 +12,20 @@
     "build-storybook": "storybook build"
   },
   "author": "Ryan Moon",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moonryc/formik-debugger.git"
+  },
+  "bugs": {
+    "url": "https://github.com/moonryc/formik-debugger/issues"
+  },
+  "homepage": "https://github.com/moonryc/formik-debugger",
+  "keywords": [
+    "formik",
+    "debugger",
+    "formik-debugger",
+    "formik debugger"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
