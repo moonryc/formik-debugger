@@ -4,7 +4,9 @@
   "description": "A developer tool to aid in large forms using formik",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
@@ -52,9 +54,9 @@
     "yup": "^1.4.0"
   },
   "peerDependencies": {
+    "formik": "^2.2.9",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "formik": "^2.2.9"
+    "react-dom": "^17.0.1"
   },
   "dependencies": {
     "@emotion/react": "^11.13.0",
