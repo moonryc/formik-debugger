@@ -37,7 +37,9 @@ bun add formik-debugger
 
 ## **_Usage_**
 
-Formik-Debugger supports both forms of Formik and supports both a Draggable Modal version and a fixed non-modal version. Multiple `<DebuggerModals/>` can be called at the same time without issue if desired to support multiple instances of Formik on your application at once.   
+Formik-Debugger supports both forms of Formik and supports both a Draggable Modal version and a fixed non-modal version. Multiple `<DebuggerModals/>` can be called at the same time without issue if desired to support multiple instances of Formik on your application at once.
+
+Everything can be imported from `import {Debugger, DebuggerModal} from "formik-debugger"` 
 
 ### **_Debugger Modal_**
 
